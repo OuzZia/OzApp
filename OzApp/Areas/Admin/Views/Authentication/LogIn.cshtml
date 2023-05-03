@@ -1,0 +1,116 @@
+﻿
+<!--@{ Layout = null; }
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Öğrenci İşleri | Giriş Sayfası</title>-->
+
+    <!-- Google Font: Source Sans Pro -->
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">-->
+    <!-- Font Awesome -->
+    <!--<link rel="stylesheet" href="~/AdminAssets/plugins/fontawesome-free/css/all.min.css">-->
+    <!-- icheck bootstrap -->
+    <!--<link rel="stylesheet" href="~/AdminAssets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">-->
+    <!-- Theme style -->
+    <!--<link rel="stylesheet" href="~/AdminAssets/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="../../index2.html"><b>Öğrenci İşleri</b>Giriş</a>
+        </div>-->
+        <!-- /.login-logo -->
+        <!--<div class="card">
+            <div class="card-body login-card-body">
+
+                <form>
+                    <div class="input-group mb-3">
+                        <input type="email" id="txtEmail" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" id="txtPassword" class="form-control" placeholder="Şifre">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    Beni Hatırla
+                                </label>
+                            </div>
+                        </div>-->
+                        <!-- /.col -->
+                        <!--<div class="col-4">
+                            <button type="button" id="btnKaydet" class="btn btn-primary btn-block">Giriş Yap</button>
+                        </div>-->
+                        <!-- /.col -->
+                    <!--</div>
+                </form>
+
+                <p class="mb-1">
+                    <a href="forgot-password.html">Şifremi Unuttum</a>
+                </p>
+                <p class="mb-0">
+                    <a href="register.html" class="text-center">Üye Ol</a>
+                </p>
+            </div>
+            
+                <div class="card-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+    <!-- /.login-box -->
+    <!-- jQuery -->
+    <!--<script src="~/AdminAssets/plugins/jquery/jquery.min.js"></script>-->
+    <!-- Bootstrap 4 -->
+    <!--<script src="~/AdminAssets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+    <!-- AdminLTE App -->
+    <!--<script src="~/AdminAssets/dist/js/adminlte.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnKaydet").click(function () {
+                var formModel = {
+                    Email: $("#txtEmail").val(),
+                    Password: $("#txtPassword").val()
+                }
+                $.ajax({
+                    url: "/admin/Authentication/LogIn",
+                    method: "post",
+                    dataType: "json",
+                    data: formModel,
+                    success: function (response) {
+                        if (!response.result) {
+                            var content = "<div class='alert alert-" + response.alertstyle + "'>" + response.message + "</div>"
+                            $(".card-footer").html("")
+                            $(".card-footer").html(content);
+                        }
+                        else
+                            window.location.href="/admin/authentication/index"
+                    }
+
+                });
+            });
+        });
+    </script>
+</body>
+</html>-->

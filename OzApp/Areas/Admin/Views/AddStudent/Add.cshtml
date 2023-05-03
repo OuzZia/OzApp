@@ -1,0 +1,162 @@
+﻿@model List<Model.Entities.Student>
+    ;
+    @{ Model.Entities.StudentAffair loggedInAdmin = ViewBag.LoggedStudentAffair as Model.Entities.StudentAffair; }
+
+    @{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+
+
+    @section customStyle{
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/AdminAssest/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminAssest/dist/css/adminlte.min.css">
+    <link href="~/lib/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" />
+    }
+    <div class="container-fluid">
+        <div class="alert-success col-12 mb-2 p-3"> Yeni Öğrenci Kayıt Formu</div>
+
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <form>
+                    <div class="card-body">
+                        <div class="form-group col-5">
+                            <label>Ad Soyad</label>
+                            <input type="text" class="form-control" id="txtFullName" placeholder="Ad Soyad:">
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="txtEmail" placeholder="Email:">
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Şifre</label>
+                            <input type="password" class="form-control" id="txtPassword" placeholder="Şifre:">
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Bölümü</label>
+
+                            <select id="txtDepartment" class="form-control">
+
+
+
+                                <option value="@loggedInAdmin.DepartmentId">@loggedInAdmin.Department.DepartmentName
+
+                            </select>
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Şehir</label>
+                            <input text="text" class="form-control" id="txtCity" placeholder="Şehir:">
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Adres</label>
+                            <input text="text" class="form-control" id="txtAdress" placeholder="Adres:">
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Doğum Tarihi</label>
+                            <input type="datetime-local" class="form-control" id="txtBirthDate" placeholder="Doğum Tarihi:">
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Kimlik No</label>
+                            <input text="text" class="form-control" id="txtIdNumber" placeholder="Kimlik No:">
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Telefon</label>
+                            <input text="text" class="form-control" id="txtPhone" placeholder="Telefon No:">
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Kayıt Tarihi</label>
+                            <input type="datetime-local" class="form-control" id="txtDateRegistiration" placeholder="Kayıt Tarihi:">
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Rolü</label>
+                           
+
+                            <select id="txtRole" class="form-control">
+
+                                @foreach (var item in Model.GroupBy(x=> x.Role))
+                                {
+                                    
+                                <option value="@item.Key.Id" />@item.Key.RoleName  }
+
+</select>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="chkIsActive">
+                            <label class="form-check-label">Aktif</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">File input</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="exampleInputFile">
+                                    <label class="custom-file-label">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="button" id="btnKaydet" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    @section customScript{
+
+    <script src="~/AdminAssest/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/AdminAssest/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="~/AdminAssest/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/AdminAssest/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/AdminAssest/dist/js/demo.js"></script>
+    <script src="~/lib/sweetalert2/dist/sweetalert2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#btnKaydet").click(function () {
+                var formModel = {
+                    FullName: $("#txtFullName").val(),
+                    Email: $("#txtEmail").val(),
+                    Password: $("#txtPassword").val(),
+                    DepartmentId: $("#txtDepartment").val(),
+                    City: $("#txtCity").val(),
+                    Adress: $("#txtAdress").val(),
+                    BirthDate: $("#txtBirthDate").val(),
+                    IdNumber: $("#txtIdNumber").val(),
+                    PhoneNumber: $("#txtPhone").val(),
+                    DateOfRegistiration: $("#txtDateRegistiration").val(),
+                    RoleId: $("#txtRole").val(),
+                    IsActive: $("#chkIsActive").is(":checked")
+                }
+                $.ajax({
+                    url: "/Admin/AddStudent/Add",
+                    method: "post",
+                    datatype: "json",
+                    data: { vm: formModel },
+                    success: function (response) {
+                        if (response.result) {
+                            alert(response.message)
+                            window.location.reload()
+                        }
+                        else {
+                            alert(response.message)
+                        }
+                    }
+                })
+            })
+
+        });
+    </script>
+    }

@@ -1,0 +1,167 @@
+﻿
+@{ 
+    Model.Entities.StudentAffair loggedInAdmin=ViewBag.LoggedStudentAffair as Model.Entities.StudentAffair;
+}
+
+
+    <!-- Brand Logo -->
+   
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="~/AdminAssets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="/Admin/Home/Index" class="d-block">@loggedInAdmin.Name</a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tree"></i>
+                        <p>
+                            Menu | @loggedInAdmin.Name
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="~/Admin/StudentList/Index" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Öğrenci Listesi</p>
+                            </a>
+                        </li>
+                        @if (loggedInAdmin.RoleId != 4)
+                        {
+
+
+
+            <li class="nav-item">
+                <a href="UI/icons.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Not Girişi</p>
+                </a>
+            </li>
+                            <li class="nav-item">
+                                <a href="UI/buttons.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Dersler</p>
+                                </a>
+                            </li>
+                                            <li class="nav-item">
+                                                <a href="UI/sliders.html" class="nav-link">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Sınav Tarihi Girişi</p>
+                                                </a>
+                                            </li>
+                                                            <li class="nav-item">
+                                                                <a href="UI/modals.html" class="nav-link">
+                                                                    <i class="far fa-circle nav-icon"></i>
+                                                                    <p>Yapılacaklar Listesi</p>
+                                                                </a>
+                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a href="UI/navbar.html" class="nav-link">
+                                                                                    <i class="far fa-circle nav-icon"></i>
+                                                                                    <p>Ders Programı</p>
+                                                                                </a>
+                                                                            </li>
+} @*@if (loggedInAdmin.TeacherRoles.SingleOrDefault(x => x.RoleId == 1 || x.RoleId == 2) != null)*@
+
+                        @if (loggedInAdmin.RoleId == 4)
+                        {
+
+
+            <li class="nav-item">
+                <a href="~/Admin/AddStudent/Add" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Yeni Öğrenci Kayıt</p>
+                </a>
+            </li>
+                            <li class="nav-item">
+                                <a href="~/Admin/DeleteStudent/Index" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Öğrenci Kayıt Düzenleme</p>
+                                </a>
+                            </li>
+                                            <li class="nav-item">
+                                                <a href="~/Admin/TeacherList/Index" class="nav-link">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Öğretim Üyeleri</p>
+                                                </a>
+                                            </li>}
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="calendar.html" class="nav-link">
+                        <i class="nav-icon far fa-calendar-alt"></i>
+                        <p>
+                            Takvim
+                            <span class="badge badge-info right">2</span>
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon far fa-envelope"></i>
+                        <p>
+                            Mesaj Kutusu
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="mailbox/mailbox.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Gelen Kutusu</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="mailbox/compose.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Mesaj Oluştur</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="mailbox/read-mail.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Okunanlar</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="~/LogIn/LogIn" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Çıkış Yap</p>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->

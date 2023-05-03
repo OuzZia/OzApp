@@ -1,0 +1,126 @@
+﻿
+@model List<Model.Entities.Student> ;
+   
+
+    @{
+        ViewData["Title"] = "Index";
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+
+
+    @section customStyle{
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="~/AdminAssest/plugins/fontawesome-free/css/all.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="~/AdminAssest/dist/css/adminlte.min.css">
+    }
+    <div class="container-fluid">
+        <div class="alert-success col-12 mb-2 p-3"> Yeni Öğrenci Kayıt Formu</div>
+        <div class="col-12">
+            <a href="#" class="btn btn-danger"> Yeni Yönetici Ekle(Modal pencere)</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <form action="~/Admin/AddStudent/Add" method="post">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Ad Soyad</label>
+                            <input type="text" name="FullName" class="form-control" id="txtName" placeholder="Ad Soyad:">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="Email" class="form-control" id="txtEmail" placeholder="Email:">
+                        </div>
+                        <div class="form-group">
+                            <label>Şifre</label>
+                            <input type="password" name="Password" class="form-control" id="txtPassword" placeholder="Şifre:">
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label>Bölümü</label>
+                            @foreach (var item in Model)
+                            {
+                                <select class="form-control" name="DepartmentId">
+
+
+
+                                    <option value="@item.DepartmentId">@item.Department.DepartmentName
+
+                                </select>}
+                        </div>
+                        <div class="form-group">
+                            <label>Şehir</label>
+                            <input text="text" name="City" class="form-control" id="txtCity" placeholder="Şehir:">
+                        </div>
+                        <div class="form-group">
+                            <label>Adres</label>
+                            <input text="text" name="Adress" class="form-control" id="txtAdress" placeholder="Adres:">
+                        </div>
+                        <div class="form-group">
+                            <label>Doğum Tarihi</label>
+                            <input type="datetime-local" name="BirthDate" class="form-control" id="txtBirthDate" placeholder="Doğum Tarihi:">
+                        </div>
+                        <div class="form-group">
+                            <label>Kimlik No</label>
+                            <input text="text" name="IdNumber" class="form-control" id="txtIdNumber" placeholder="Kimlik No:">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon</label>
+                            <input text="text" name="PhoneNumber" class="form-control" id="txtPhone" placeholder="Telefon No:">
+                        </div>
+                        <div class="form-group">
+                            <label>Kayıt Tarihi</label>
+                            <input type="datetime-local" name="DateOfRegistiration" class="form-control" id="txtDateRegistiration" placeholder="Kayıt Tarihi:">
+                        </div>
+                        <div class="form-group col-4">
+                            <label>Rolü</label>
+                            @foreach (var item in Model)
+                            {
+
+                                <select class="form-control" name="RoleId">
+
+
+
+                                    <option value="@item.RoleId">@item.Role.RoleName
+
+                                </select>}
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" name="IsActive" class="form-check-input" id="chkIsActive">
+                            <label class="form-check-label">Aktif</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">File input</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="exampleInputFile">
+                                    <label class="custom-file-label">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    @section customScript{
+
+        <script src="~/AdminAssest/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="~/AdminAssest/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- bs-custom-file-input -->
+        <script src="~/AdminAssest/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="~/AdminAssest/dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="~/AdminAssest/dist/js/demo.js"></script>
+    }

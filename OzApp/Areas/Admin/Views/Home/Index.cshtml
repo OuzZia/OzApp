@@ -1,0 +1,8 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@{ Model.Entities.StudentAffair loggedInAdmin = ViewBag.LoggedStudentAffair as Model.Entities.StudentAffair; }
+<h1>Öğrenci İşleri | @loggedInAdmin.Department.DepartmentName @loggedInAdmin.Name </h1>
+
